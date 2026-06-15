@@ -1,0 +1,33 @@
+# ─── Netlify Configuration ────────────────────────────────────────────────────
+# Next.js portfolio — Vidura Rathnayaka
+# The @netlify/plugin-nextjs plugin handles SSR, API routes, and image optimization.
+
+[build]
+  command   = "npm run build"
+  publish   = ".next"
+
+[build.environment]
+  # Node version — use 18 LTS for Next.js 16 compatibility
+  NODE_VERSION = "18"
+
+# Netlify Next.js plugin — required for App Router + API routes
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# ─── Environment Variables ────────────────────────────────────────────────────
+# Do NOT put real values here — set these in the Netlify dashboard:
+#   Site Settings → Environment Variables
+#
+#   EMAIL_USER = viduraruwantha2002@gmail.com
+#   EMAIL_PASS = <your Gmail App Password>
+#
+# The contact form API route (app/api/contact/route.ts) reads these at runtime.
+
+# ─── Headers ─────────────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-XSS-Protection       = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
