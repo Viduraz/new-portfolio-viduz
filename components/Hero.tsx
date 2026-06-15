@@ -271,7 +271,7 @@ export default function Hero() {
             width: 380, height: 380,
             top: '50%', left: '50%',
             transform: 'translate(-50%, -60%)',
-            marginLeft: '180px',   // ← match the image's offset
+            marginLeft: '80px',
             background: 'radial-gradient(circle, rgba(255,107,0,0.22) 0%, rgba(255,107,0,0.08) 35%, transparent 70%)',
             filter: 'blur(30px)',
           }}
@@ -313,7 +313,7 @@ export default function Hero() {
               width: 'clamp(240px, 36vw, 360px)',
               height: 'clamp(280px, 20vw, 420px)',
               y: imageY,
-              marginLeft: '180px',   // ← increase to move further right, decrease/remove to center
+              marginLeft: '80px',
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
