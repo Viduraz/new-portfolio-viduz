@@ -7,8 +7,9 @@
   publish   = ".next"
 
 [build.environment]
-  # Node version — use 18 LTS for Next.js 16 compatibility
   NODE_VERSION = "18"
+  NPM_FLAGS    = "--legacy-peer-deps"
+
 
 # Netlify Next.js plugin — required for App Router + API routes
 [[plugins]]
