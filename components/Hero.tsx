@@ -266,14 +266,24 @@ export default function Hero() {
         />
         {/* Center amber halo (behind image) */}
         <div
-          className="absolute rounded-full"
+          className="absolute rounded-full hidden sm:block"
           style={{
             width: 380, height: 380,
             top: '50%', left: '50%',
-            transform: 'translate(-50%, -60%)',
-            marginLeft: '80px',
+            transform: 'translate(-50%, -60%) translateX(80px)',
             background: 'radial-gradient(circle, rgba(255,107,0,0.22) 0%, rgba(255,107,0,0.08) 35%, transparent 70%)',
             filter: 'blur(30px)',
+          }}
+        />
+        {/* Mobile halo — centered, no offset */}
+        <div
+          className="absolute rounded-full sm:hidden"
+          style={{
+            width: 280, height: 280,
+            top: '50%', left: '50%',
+            transform: 'translate(-50%, -60%)',
+            background: 'radial-gradient(circle, rgba(255,107,0,0.20) 0%, rgba(255,107,0,0.07) 35%, transparent 70%)',
+            filter: 'blur(24px)',
           }}
         />
       </motion.div>
@@ -284,12 +294,12 @@ export default function Hero() {
         {/* Icon ecosystem + Profile */}
         <div
           className="relative flex items-center justify-center"
-          style={{ width: '100%', height: 'clamp(480px, 60vh, 580px)' }}
+          style={{ width: '100%', height: 'clamp(360px, 55vh, 560px)' }}
         >
 
 
-          {/* Left cluster: dev icons */}
-          <div className="absolute inset-0 pointer-events-none" aria-label="Dev tech cluster" style={{ pointerEvents: 'none' }}>
+          {/* Left cluster: dev icons — hidden on mobile */}
+          <div className="absolute inset-0 pointer-events-none hidden sm:block" aria-label="Dev tech cluster" style={{ pointerEvents: 'none' }}>
             <div style={{ pointerEvents: 'auto' }}>
               {devIcons.map(ic => (
                 <FloatIcon key={`dev-${ic.label}`} {...ic} />
@@ -297,8 +307,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right cluster: design icons */}
-          <div className="absolute inset-0 pointer-events-none" aria-label="Design tech cluster" style={{ pointerEvents: 'none' }}>
+          {/* Right cluster: design icons — hidden on mobile */}
+          <div className="absolute inset-0 pointer-events-none hidden sm:block" aria-label="Design tech cluster" style={{ pointerEvents: 'none' }}>
             <div style={{ pointerEvents: 'auto' }}>
               {designIcons.map(ic => (
                 <FloatIcon key={`design-${ic.label}`} {...ic} />
@@ -308,12 +318,11 @@ export default function Hero() {
 
           {/* Profile image — absolutely centered */}
           <motion.div
-            className="relative z-20 flex-shrink-0"
+            className="relative z-20 flex-shrink-0 sm:translate-x-[80px]"
             style={{
-              width: 'clamp(240px, 36vw, 360px)',
-              height: 'clamp(280px, 20vw, 420px)',
+              width: 'clamp(200px, 55vw, 360px)',
+              height: 'clamp(240px, 45vw, 420px)',
               y: imageY,
-              marginLeft: '80px',
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
