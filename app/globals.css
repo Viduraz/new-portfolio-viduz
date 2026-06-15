@@ -59,9 +59,10 @@ body {
 
   .glass-border-gradient {
     position: relative;
-    background: rgba(10, 10, 11, 0.6);
+    background: rgba(10, 10, 11, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    isolation: isolate;
   }
 
   .glass-border-gradient::before {
@@ -70,6 +71,7 @@ body {
     inset: 0;
     border-radius: inherit;
     padding: 1px;
+    z-index: -1;
     background: linear-gradient(
       135deg,
       rgba(255, 107, 0, 0.3),
@@ -83,6 +85,7 @@ body {
     mask-composite: exclude;
     pointer-events: none;
   }
+
 
   /* Primary gradient button */
   .btn-primary {

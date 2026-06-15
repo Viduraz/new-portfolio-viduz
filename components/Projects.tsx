@@ -94,53 +94,49 @@ export default function Projects() {
 
         {/* Upcoming Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 col-span-full">
+
           {/* Coming Soon Placeholder Card 1 */}
-        <Reveal duration={0.6} className="h-full">
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="flex flex-col items-center justify-center p-8 sm:p-12 rounded-3xl border-2 border-dashed border-white/10 bg-white/[0.01] text-center h-full min-h-[350px] relative group overflow-hidden"
-          >
-            {/* Subtle floating overlay circles inside */}
-            <div className="absolute w-40 h-40 bg-[#ff6b00]/2 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+          <Reveal duration={0.6} className="h-full">
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="flex flex-col items-center justify-center p-8 sm:p-12 rounded-3xl border-2 border-dashed border-white/10 bg-white/[0.01] text-center h-full min-h-[350px] relative group overflow-hidden"
+            >
+              <div className="absolute w-40 h-40 bg-[#ff6b00]/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+              <div className="text-4xl mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">🛠️</div>
+              <h3 className="text-lg sm:text-xl font-bold text-white/70 group-hover:text-white transition-colors duration-300 mb-2">
+                Next Big Idea
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6 max-w-xs">
+                Currently designing and architecting a new microservices project with Spring Cloud & Next.js.
+              </p>
+              <span className="px-4 py-1.5 rounded-full border border-white/10 text-[10px] font-mono-label text-zinc-500 group-hover:text-[#ffb693]/80 group-hover:border-[#ff6b00]/30 transition-all duration-300">
+                Under Construction
+              </span>
+            </motion.div>
+          </Reveal>
 
-            <div className="text-4xl mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-              🛠️
-            </div>
-            <h3 className="text-lg sm:text-xl font-bold text-white/60 group-hover:text-white transition-colors duration-300 mb-2">
-              Next Big Idea
-            </h3>
-            <p className="text-white/30 text-xs sm:text-sm font-light max-w-xs leading-relaxed mb-6">
-              Currently designing and architecting a new microservices project with Spring Cloud & Next.js.
-            </p>
-            <span className="px-4 py-1.5 rounded-full border border-white/5 text-[10px] font-mono-label text-white/30 group-hover:text-[#ffb693]/80 group-hover:border-[#ff6b00]/30 transition-all duration-300">
-              Under Construction
-            </span>
-          </motion.div>
-        </Reveal>
+          {/* Coming Soon Placeholder Card 2 */}
+          <Reveal duration={0.6} className="h-full">
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="flex flex-col items-center justify-center p-8 sm:p-12 rounded-3xl border-2 border-dashed border-white/10 bg-white/[0.01] text-center h-full min-h-[350px] relative group overflow-hidden"
+            >
+              <div className="absolute w-40 h-40 bg-[#4b8eff]/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+              <div className="text-4xl mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">🔬</div>
+              <h3 className="text-lg sm:text-xl font-bold text-white/70 group-hover:text-white transition-colors duration-300 mb-2">
+                AI / ML Experiment
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6 max-w-xs">
+                Researching LLM integrations and retrieval-augmented generation pipelines for student portals.
+              </p>
+              <span className="px-4 py-1.5 rounded-full border border-white/10 text-[10px] font-mono-label text-zinc-500 group-hover:text-[#adc6ff]/80 group-hover:border-[#4b8eff]/30 transition-all duration-300">
+                Research & Development
+              </span>
+            </motion.div>
+          </Reveal>
 
-        {/* Coming Soon Placeholder Card 2 */}
-        <Reveal duration={0.6} className="h-full">
-          <motion.div
-            whileHover={{ y: -4 }}
-            className="flex flex-col items-center justify-center p-8 sm:p-12 rounded-3xl border-2 border-dashed border-white/10 bg-white/[0.01] text-center h-full min-h-[350px] relative group overflow-hidden"
-          >
-            <div className="absolute w-40 h-40 bg-[#4b8eff]/2 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
-
-            <div className="text-4xl mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-              🔬
-            </div>
-            <h3 className="text-lg sm:text-xl font-bold text-white/60 group-hover:text-white transition-colors duration-300 mb-2">
-              AI / ML Experiment
-            </h3>
-            <p className="text-white/30 text-xs sm:text-sm font-light max-w-xs leading-relaxed mb-6">
-              Researching LLM integrations and retrieval-augmented generation pipelines for student portals.
-            </p>
-            <span className="px-4 py-1.5 rounded-full border border-white/5 text-[10px] font-mono-label text-white/30 group-hover:text-[#adc6ff]/80 group-hover:border-[#4b8eff]/30 transition-all duration-300">
-              Research & Development
-            </span>
-          </motion.div>
-        </Reveal>
         </div>
+
       </div>
 
       <FocusFoxModal isOpen={isFocusFoxOpen} onClose={() => setIsFocusFoxOpen(false)} />

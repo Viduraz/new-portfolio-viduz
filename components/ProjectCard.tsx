@@ -28,9 +28,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(255,107,0,0.1)' }}
+      whileHover={{ y: -6, boxShadow: '0 24px 50px rgba(255,107,0,0.14)' }}
       onClick={handleCardClick}
-      className={`glass-border-gradient flex flex-col rounded-3xl overflow-hidden group transition-all duration-300 h-full ${
+      style={{ isolation: 'isolate' }}
+      className={`glass-border-gradient flex flex-col rounded-3xl overflow-hidden group transition-all duration-300 h-full bg-[#09090b] shadow-[0_18px_35px_rgba(0,0,0,0.45)] ${
         onClick ? 'cursor-pointer' : ''
       }`}
     >
@@ -56,8 +57,8 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               key={tag}
               className={`px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider font-mono-label ${
                 idx % 2 === 0
-                  ? 'border border-[#ff6b00]/30 text-[#ffb693]/80 bg-[#ff6b00]/5'
-                  : 'border border-[#4b8eff]/30 text-[#adc6ff]/80 bg-[#4b8eff]/5'
+                  ? 'border border-[#ff6b00]/40 text-[#ffd5c0] bg-[#ff6b00]/10'
+                  : 'border border-[#4b8eff]/40 text-[#dfe8ff] bg-[#4b8eff]/10'
               }`}
             >
               {tag}
@@ -71,9 +72,17 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         </h3>
 
         {/* Description */}
-        <p className="text-white/60 text-sm sm:text-base font-light leading-relaxed mb-6 flex-grow">
+        <p className="text-zinc-300 text-sm leading-relaxed mb-4 flex-grow">
           {project.description}
         </p>
+
+        {/* Click CTA hint for clickable cards */}
+        {onClick && (
+          <p className="text-[#ff6b00]/70 text-[11px] font-mono-label tracking-widest mb-4 flex items-center gap-1.5 group-hover:text-[#ff6b00] transition-colors duration-300">
+            <span className="inline-block w-4 h-px bg-[#ff6b00]/50 group-hover:w-6 transition-all duration-300" />
+            Click to explore details
+          </p>
+        )}
 
         {/* Action Links */}
         <div className="flex items-center gap-6 mt-auto pt-4 border-t border-white/[0.05]">
@@ -82,7 +91,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider font-mono-label text-white/70 hover:text-white group/link transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider font-mono-label text-zinc-100 hover:text-white group/link transition-colors duration-200"
             >
               <FaExternalLinkAlt size={12} className="text-[#ff6b00]" />
               <span>Live Demo</span>
@@ -95,7 +104,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider font-mono-label text-white/70 hover:text-white group/link transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider font-mono-label text-zinc-100 hover:text-white group/link transition-colors duration-200"
             >
               <FaGithub size={14} className="text-[#4b8eff]" />
               <span>GitHub</span>
