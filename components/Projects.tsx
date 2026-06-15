@@ -54,30 +54,47 @@ export default function Projects() {
                 project.slug === 'mof-internship'
                   ? () => setIsMofInternshipOpen(true)
                   : project.slug === 'focusfox'
-                  ? () => setIsFocusFoxOpen(true)
-                  : project.slug === 'hotel-cancellation'
-                  ? () => setIsHotelCancellationOpen(true)
-                  : project.slug === 'jayasinghe-storeline'
-                  ? () => setIsJayasingheStorelineOpen(true)
-                  : project.slug === 'maj-25'
-                  ? () => setIsMajOpen(true)
-                  : project.slug === 'gurugedara'
-                  ? () => setIsGuruGedaraOpen(true)
-                  : project.slug === 'medical-history'
-                  ? () => setIsMedicalHistoryOpen(true)
-                  : project.slug === 'agrilanka'
-                  ? () => setIsAgriLankaOpen(true)
-                  : project.slug === 'vehicle-rental'
-                  ? () => setIsVehicleRentalOpen(true)
-                  : project.slug === 'todo-list'
-                  ? () => setIsTodoListOpen(true)
-                  : undefined
+                    ? () => setIsFocusFoxOpen(true)
+                    : project.slug === 'hotel-cancellation'
+                      ? () => setIsHotelCancellationOpen(true)
+                      : project.slug === 'jayasinghe-storeline'
+                        ? () => setIsJayasingheStorelineOpen(true)
+                        : project.slug === 'maj-25'
+                          ? () => setIsMajOpen(true)
+                          : project.slug === 'gurugedara'
+                            ? () => setIsGuruGedaraOpen(true)
+                            : project.slug === 'medical-history'
+                              ? () => setIsMedicalHistoryOpen(true)
+                              : project.slug === 'agrilanka'
+                                ? () => setIsAgriLankaOpen(true)
+                                : project.slug === 'vehicle-rental'
+                                  ? () => setIsVehicleRentalOpen(true)
+                                  : project.slug === 'todo-list'
+                                    ? () => setIsTodoListOpen(true)
+                                    : undefined
               }
             />
           </div>
         ))}
 
-        {/* Coming Soon Placeholder Card 1 */}
+        {/* Upcoming Projects Sub-section */}
+        <div className="flex flex-col items-center text-center gap-4 mt-24 sm:mt-32 mb-12 col-span-full">
+          <Reveal delay={0.1}>
+            <span className="font-mono-label text-[#4b8eff]">
+              {"// UNDER DEVELOPMENT"}
+            </span>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white">
+              Upcoming <span className="text-gradient-blue">Projects</span>
+            </h3>
+          </Reveal>
+        </div>
+
+        {/* Upcoming Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 col-span-full">
+          {/* Coming Soon Placeholder Card 1 */}
         <Reveal duration={0.6} className="h-full">
           <motion.div
             whileHover={{ y: -4 }}
@@ -123,6 +140,7 @@ export default function Projects() {
             </span>
           </motion.div>
         </Reveal>
+        </div>
       </div>
 
       <FocusFoxModal isOpen={isFocusFoxOpen} onClose={() => setIsFocusFoxOpen(false)} />

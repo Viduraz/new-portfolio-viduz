@@ -181,15 +181,6 @@ export const projectsData: Project[] = [
     description: 'A clean and practical Android productivity app built with Kotlin and AndroidX. Combines a task-oriented home dashboard, reminder scheduling with SharedPreferences local persistence, onboarding slides, and a custom timer/stopwatch utility with notification support.',
     tags: ['Kotlin', 'Android SDK', 'AndroidX', 'SharedPreferences', 'Material Design'],
     imagePath: '/images/projects/todo-list.png',
-    githubUrl: 'https://github.com/Viduraz/To_Do_list.git'
-  },
-  {
-    slug: 'academic-burnout',
-    title: 'Academic Burnout Prediction',
-    description: 'An AI/ML research initiative focused on predicting student burnout levels early. Employs advanced machine learning models trained on behavioral, academic, and physiological indicators.',
-    tags: ['Python', 'Machine Learning', 'Research'],
-    imagePath: '/images/projects/academic-burnout.jpg',
-    liveUrl: '#',
-    githubUrl: 'https://github.com/ViduraRathnayaka'
   }
 ]
+

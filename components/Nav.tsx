@@ -66,10 +66,10 @@ export default function Nav() {
             onClick={handleLinkClick}
           >
             <span
-              className="text-xl font-black tracking-tight text-gradient-amber"
+              className="text-2xl font-black tracking-tight text-gradient-amber"
               style={{ fontFamily: 'var(--font-inter)' }}
             >
-              Vid
+              VIDURA
             </span>
             <span
               className="w-1.5 h-1.5 rounded-full bg-[#ff6b00] group-hover:scale-150 transition-transform duration-300"
@@ -83,7 +83,7 @@ export default function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="relative text-sm font-medium text-white/60 hover:text-white transition-colors duration-200 group"
+                  className="relative text-base font-semibold text-white/60 hover:text-white transition-colors duration-200 group"
                 >
                   {link.label}
                   <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-[#ff6b00] to-[#ffb693] group-hover:w-full transition-all duration-300" />
@@ -95,7 +95,7 @@ export default function Nav() {
           {/* CTA */}
           <Link
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-semibold glass-border-gradient text-white/80 hover:text-white transition-all duration-300 hover:scale-105"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-base font-bold glass-border-gradient text-white/80 hover:text-white transition-all duration-300 hover:scale-105"
           >
             Hire Me
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />

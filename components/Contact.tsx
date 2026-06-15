@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiGithub, FiLinkedin, FiMail, FiCheck } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail, FiCheck, FiPhone } from 'react-icons/fi'
 import Reveal from './Reveal'
 
 interface ContactFormInputs {
@@ -64,6 +64,13 @@ export default function Contact() {
       href: 'mailto:viduraruwantha2002@gmail.com',
       icon: FiMail,
       brandColor: '#ea4335',
+    },
+    {
+      label: 'Phone',
+      value: '+94 77 2909990',
+      href: 'tel:+94772909990',
+      icon: FiPhone,
+      brandColor: '#ff6b00',
     },
     {
       label: 'GitHub',
