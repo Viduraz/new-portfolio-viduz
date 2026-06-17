@@ -76,9 +76,30 @@ const designIcons = [
 
 const ctaButtons = [
   { label: 'View Projects', href: '#projects', variant: 'primary' as const },
-  { label: 'Download CV', href: '/cv.pdf', variant: 'secondary' as const },
+  { label: 'Download CV', href: '/cv.html', variant: 'secondary' as const },
   { label: 'Contact Me', href: '#contact', variant: 'secondary' as const },
 ]
+
+// Detects mobile/tablet at click time and either downloads the PDF
+// directly (mobile) or opens the interactive CV page (desktop).
+function handleCVAction(e: React.MouseEvent) {
+  e.preventDefault()
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      typeof navigator !== 'undefined' ? navigator.userAgent : ''
+    ) || (typeof window !== 'undefined' && window.innerWidth < 1024)
+
+  if (isMobile) {
+    const a = document.createElement('a')
+    a.href = '/cv.pdf'
+    a.download = 'Vidura_Rathnayaka_CV.pdf'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  } else {
+    window.open('/cv.html', '_blank', 'noopener,noreferrer')
+  }
+}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -401,12 +422,21 @@ export default function Hero() {
                   >
                     <span>{btn.label}</span>
                   </Link>
+                ) : btn.label === 'Download CV' ? (
+                  <a
+                    href="/cv.html"
+                    id="cta-download-cv"
+                    className="btn-secondary"
+                    onClick={handleCVAction}
+                    aria-label="Download CV — opens preview on desktop, downloads PDF on mobile"
+                  >
+                    {btn.label}
+                  </a>
                 ) : (
                   <Link
                     href={btn.href}
                     id={`cta-${btn.label.toLowerCase().replace(/\s+/g, '-')}`}
                     className="btn-secondary"
-                    download={btn.label === 'Download CV' ? true : undefined}
                   >
                     {btn.label}
                   </Link>

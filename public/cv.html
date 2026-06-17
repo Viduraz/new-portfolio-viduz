@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CV of R. M. Vidura Ruwantha Rathnayaka — Full Stack Developer & IT Undergraduate at SLIIT." />
+  <title>Vidura Rathnayaka — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══ RESET ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1a2744;
+      --teal:    #00b4d8;
+      --teal-lt: #e6f8fc;
+      --ink:     #1a1a2e;
+      --ink2:    #374151;
+      --ink3:    #6b7280;
+      --rule:    #e5e7eb;
+      --white:   #ffffff;
+      --sidebar-bg: #f8fafc;
+    }
+
+    html { font-size: 14px; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #e8ecf0;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ═══ DOWNLOAD BUTTON ═══ */
+    #download-btn {
+      position: fixed;
+      top: 1.1rem;
+      right: 1.4rem;
+      z-index: 9999;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 4px 16px rgba(26,39,68,0.25);
+      transition: all 0.2s;
+    }
+    #download-btn:hover { background: var(--teal); box-shadow: 0 6px 20px rgba(0,180,216,0.35); transform: translateY(-1px); }
+    #download-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    /* Tooltip */
+    .btn-wrap { position: fixed; top: 1.1rem; right: 1.4rem; z-index: 9999; }
+    .btn-tooltip {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--ink);
+      color: #fff;
+      font-size: 0.68rem;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      padding: 0.55rem 0.75rem;
+      border-radius: 8px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .btn-tooltip::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      right: 1rem;
+      width: 10px;
+      height: 5px;
+      background: var(--ink);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    .btn-wrap:hover .btn-tooltip { opacity: 1; transform: translateY(0); }
+
+    /* ═══ CV CARD ═══ */
+    .cv-page {
+      max-width: 870px;
+      margin: 2rem auto;
+      background: var(--white);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP HEADER BAND ── */
+    .cv-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.4rem 0.9rem;
+      border-bottom: 3px solid var(--teal);
+      background: var(--white);
+    }
+
+    .hdr-photo {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 2.5px solid var(--teal);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--teal-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hdr-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .hdr-photo .initials {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--teal);
+    }
+
+    .hdr-text { flex: 1; }
+    .hdr-name {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+    .hdr-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--teal);
+      margin-top: 0.18rem;
+      letter-spacing: 0.02em;
+    }
+    .hdr-quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.9rem;
+      margin-top: 0.35rem;
+    }
+    .hdr-quick-item {
+      font-size: 0.7rem;
+      color: var(--ink2);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .hdr-quick-item svg { width: 10px; height: 10px; fill: var(--teal); flex-shrink: 0; }
+    .hdr-quick-item a { color: var(--ink2); }
+
+    /* ── BODY COLUMNS ── */
+    .cv-body {
+      display: flex;
+      flex: 1;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 30%;
+      min-width: 210px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--rule);
+      padding: 0.85rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* ── MAIN ── */
+    .main-col {
+      flex: 1;
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+
+    /* ── SECTION TITLE ── */
+    .sec-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      padding-bottom: 0.28rem;
+      border-bottom: 1.5px solid var(--teal);
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .sec-title svg { width: 10px; height: 10px; fill: var(--teal); }
+
+    /* ── SIDEBAR: Contact ── */
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.32rem; }
+    .ci {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.35rem;
+      font-size: 0.69rem;
+      color: var(--ink2);
+      line-height: 1.4;
+    }
+    .ci svg { width: 10px; height: 10px; fill: var(--teal); flex-shrink: 0; margin-top: 1px; }
+    .ci a { color: var(--ink2); }
+    .ci a:hover { color: var(--teal); }
+
+    /* ── SIDEBAR: Skills ── */
+    .skill-group { margin-bottom: 0.45rem; }
+    .skill-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.22rem;
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.2rem; }
+    .pill {
+      font-size: 0.6rem;
+      font-weight: 500;
+      padding: 0.1rem 0.38rem;
+      border-radius: 50px;
+      border: 1px solid var(--teal);
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.5;
+    }
+
+    /* ── SIDEBAR: Lists ── */
+    .sb-list { list-style: none; display: flex; flex-direction: column; gap: 0.28rem; }
+    .sb-item {
+      font-size: 0.67rem;
+      color: var(--ink2);
+      padding-left: 0.7rem;
+      position: relative;
+      line-height: 1.4;
+    }
+    .sb-item::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.58rem;
+      top: 0.1em;
+    }
+    .sb-item.italic { font-style: italic; color: var(--ink3); }
+
+    /* ── MAIN: About ── */
+    .about-text {
+      font-size: 0.75rem;
+      color: var(--ink2);
+      line-height: 1.6;
+    }
+
+    /* ── MAIN: Experience ── */
+    .exp-entry { margin-bottom: 0.6rem; }
+    .exp-entry:last-child { margin-bottom: 0; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; flex-wrap: wrap; }
+    .exp-role { font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+    .exp-org { font-size: 0.69rem; color: var(--teal); font-weight: 500; margin-top: 0.05rem; }
+    .exp-period {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--ink3);
+      white-space: nowrap;
+      border: 1px solid var(--rule);
+      padding: 0.1rem 0.4rem;
+      border-radius: 50px;
+    }
+    .exp-bullets { list-style: none; margin-top: 0.3rem; display: flex; flex-direction: column; gap: 0.2rem; }
+    .exp-bullets li {
+      font-size: 0.71rem;
+      color: var(--ink2);
+      padding-left: 0.8rem;
+      position: relative;
+      line-height: 1.45;
+    }
+    .exp-bullets li::before { content: '·'; position: absolute; left: 0.1rem; color: var(--teal); font-weight: 700; }
+
+    /* ── MAIN: Education ── */
+    .edu-entry {
+      border-left: 3px solid var(--teal);
+      padding: 0.35rem 0.6rem;
+      background: var(--sidebar-bg);
+      border-radius: 0 4px 4px 0;
+    }
+    .edu-degree { font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+    .edu-spec { font-size: 0.68rem; color: var(--teal); font-weight: 500; }
+    .edu-inst { font-size: 0.69rem; color: var(--ink2); margin-top: 0.08rem; }
+    .edu-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.2rem; }
+    .edu-badge {
+      font-size: 0.6rem;
+      font-weight: 600;
+      border: 1px solid var(--teal);
+      color: var(--navy);
+      padding: 0.08rem 0.38rem;
+      border-radius: 50px;
+      background: var(--white);
+    }
+
+    /* ── MAIN: Projects ── */
+    .proj-entry {
+      border-left: 2px solid var(--teal);
+      padding: 0.35rem 0.55rem;
+      margin-bottom: 0.45rem;
+      page-break-inside: avoid;
+    }
+    .proj-entry:last-child { margin-bottom: 0; }
+    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem; flex-wrap: wrap; }
+    .proj-name { font-size: 0.74rem; font-weight: 700; color: var(--ink); }
+    .proj-links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+    .proj-link {
+      font-size: 0.58rem;
+      font-weight: 600;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      padding: 0.08rem 0.38rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .proj-link:hover { background: var(--teal); color: var(--white); text-decoration: none; }
+    .proj-desc { font-size: 0.69rem; color: var(--ink2); margin-top: 0.2rem; line-height: 1.45; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 0.18rem; margin-top: 0.25rem; }
+    .stack-pill {
+      font-size: 0.57rem;
+      font-weight: 600;
+      padding: 0.08rem 0.35rem;
+      border-radius: 50px;
+      border: 1px solid var(--rule);
+      color: var(--ink3);
+      background: var(--white);
+    }
+    .proj-more { font-size: 0.62rem; color: var(--ink3); margin-top: 0.3rem; font-style: italic; }
+    .proj-more a { color: var(--teal); }
+
+    /* ── MAIN: Referees ── */
+    .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .ref-card {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 0.5rem 0.6rem;
+      background: var(--sidebar-bg);
+    }
+    .ref-name { font-size: 0.73rem; font-weight: 700; color: var(--ink); }
+    .ref-pos { font-size: 0.65rem; color: var(--teal); font-weight: 500; margin-top: 0.05rem; line-height: 1.3; }
+    .ref-org { font-size: 0.63rem; color: var(--ink3); margin-top: 0.05rem; }
+    .ref-contact { margin-top: 0.3rem; display: flex; flex-direction: column; gap: 0.15rem; }
+    .ref-row { font-size: 0.62rem; color: var(--ink2); display: flex; align-items: center; gap: 0.25rem; }
+    .ref-row svg { width: 9px; height: 9px; fill: var(--teal); flex-shrink: 0; }
+
+    /* ── DIVIDER between exp entries ── */
+    .exp-divider { border: none; border-top: 1px dashed var(--rule); margin: 0.5rem 0; }
+
+    /* ── FOOTER ── */
+    .cv-footer {
+      text-align: center;
+      padding: 0.4rem 1rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.62rem;
+      color: var(--ink3);
+      background: var(--white);
+    }
+    .cv-footer a { color: var(--teal); }
+
+    /* ═══ PRINT STYLES ═══ */
+    @media print {
+      @page { size: A4; margin: 10mm; }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html, body {
+        background: #fff !important;
+        font-size: 8.5pt !important;
+      }
+
+      body { background: #fff !important; }
+
+      .btn-wrap { display: none !important; }
+
+      .cv-page {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .cv-header { padding: 0.5rem 0.7rem 0.5rem; }
+      .hdr-photo { width: 58px; height: 58px; }
+      .hdr-name { font-size: 14pt; }
+
+      .sidebar { padding: 0.45rem 0.55rem; gap: 0.6rem; }
+      .main-col { padding: 0.45rem 0.7rem; gap: 0.6rem; }
+
+      .exp-entry { margin-bottom: 0.4rem; }
+      .proj-entry { margin-bottom: 0.3rem; padding: 0.25rem 0.4rem; }
+
+      .pill, .stack-pill, .proj-link, .edu-badge {
+        border-color: var(--teal) !important;
+        -webkit-print-color-adjust: exact !important;
+      }
+
+      .edu-entry { background: #f8fafc !important; -webkit-print-color-adjust: exact !important; }
+      .ref-card { background: #f8fafc !important; -webkit-print-color-adjust: exact !important; }
+      .sidebar { background: #f8fafc !important; -webkit-print-color-adjust: exact !important; }
+
+      .cv-body { break-inside: avoid; }
+      .proj-entry { page-break-inside: avoid; }
+      .ref-grid { page-break-inside: avoid; }
+      .exp-entry { page-break-inside: avoid; }
+
+      a { color: inherit !important; }
+    }
+
+    /* ═══ SCREEN: Responsive ═══ */
+    @media (max-width: 640px) {
+      .cv-body { flex-direction: column; }
+      .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--rule); }
+      .ref-grid { grid-template-columns: 1fr; }
+      .cv-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ DOWNLOAD BUTTON ═══ -->
+  <div class="btn-wrap">
+    <button id="download-btn" onclick="handlePrint()" aria-label="Download CV as PDF">
+      <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4v-2h14v2H5z"/></svg>
+      Download CV
+    </button>
+    <div class="btn-tooltip">
+      💡 In the print dialog:<br>
+      → Set <strong>Destination</strong> to <em>Save as PDF</em><br>
+      → Click <strong>Save</strong>
+    </div>
+  </div>
+
+  <div class="cv-page">
+
+    <!-- ═══ HEADER BAND ═══ -->
+    <header class="cv-header">
+      <div class="hdr-photo" id="hdr-photo-wrap">
+        <span class="initials">VR</span>
+      </div>
+      <div class="hdr-text">
+        <div class="hdr-name">R. M. Vidura Ruwantha Rathnayaka</div>
+        <div class="hdr-title">Full Stack Developer &nbsp;|&nbsp; Java · Spring Boot · MERN Stack</div>
+        <div class="hdr-quick">
+          <span class="hdr-quick-item">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            +94 77 290 9990
+          </span>
+          <span class="hdr-quick-item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+            <a href="mailto:viduraruwantha2002@gmail.com">viduraruwantha2002@gmail.com</a>
+          </span>
+          <span class="hdr-quick-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            <a href="https://vidura.live" target="_blank">vidura.live</a>
+          </span>
+          <span class="hdr-quick-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Rajagiriya, Sri Lanka
+          </span>
+          <span class="hdr-quick-item">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <a href="https://linkedin.com/in/vidurarathnayaka" target="_blank">vidurarathnayaka</a>
+          </span>
+          <span class="hdr-quick-item">
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <a href="https://github.com/Viduraz" target="_blank">Viduraz</a>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ BODY ═══ -->
+    <div class="cv-body">
+
+      <!-- ════ SIDEBAR ════ -->
+      <aside class="sidebar">
+
+        <!-- Skills -->
+        <section aria-label="Technical Skills">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+            Technical Skills
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Languages</div>
+            <div class="pills"><span class="pill">Java</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">Python</span><span class="pill">PHP</span><span class="pill">Kotlin</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Frameworks</div>
+            <div class="pills"><span class="pill">Spring Boot</span><span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Node.js</span><span class="pill">Express</span><span class="pill">Vue.js</span><span class="pill">Tailwind</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Databases</div>
+            <div class="pills"><span class="pill">MySQL</span><span class="pill">MongoDB</span><span class="pill">SQLite</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">DevOps & Cloud</div>
+            <div class="pills"><span class="pill">Docker</span><span class="pill">Kafka</span><span class="pill">Git</span><span class="pill">Firebase</span><span class="pill">Cloudinary</span><span class="pill">Vercel</span><span class="pill">AWS</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Architecture</div>
+            <div class="pills"><span class="pill">Microservices</span><span class="pill">Monolithic</span><span class="pill">REST APIs</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">AI / ML</div>
+            <div class="pills"><span class="pill">Scikit-Learn</span><span class="pill">Pandas</span><span class="pill">Jupyter</span><span class="pill">LLM R&D</span></div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Tools</div>
+            <div class="pills"><span class="pill">Figma</span><span class="pill">Power BI</span><span class="pill">Arduino</span><span class="pill">Blender</span><span class="pill">Photoshop</span><span class="pill">Canva</span></div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section aria-label="Certifications">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            Certifications
+          </div>
+          <ul class="sb-list">
+            <li class="sb-item">CS50x — Intro to CS, Harvard University</li>
+            <li class="sb-item">Mobile and Cloud Computing</li>
+            <li class="sb-item">Data Analysis with Power BI</li>
+            <li class="sb-item">Python for Beginners</li>
+            <li class="sb-item">Artificial Intelligence for Beginners</li>
+            <li class="sb-item italic">Java Fundamentals & Salesforce (In Progress)</li>
+            <li class="sb-item">Arduino Robotics — Line Following Robot</li>
+          </ul>
+        </section>
+
+        <!-- Extra-Curricular -->
+        <section aria-label="Activities">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Extra-Curricular
+          </div>
+          <ul class="sb-list">
+            <li class="sb-item">Program & Logistics Lead — IEEE Day, SLIIT</li>
+            <li class="sb-item">Logistics Lead — Interfuse, IEEE KDU + SLIIT</li>
+            <li class="sb-item">Member — IEEE Student Branch, SLIIT</li>
+            <li class="sb-item">President Scout Award 2021 (Ce. No: 9046)</li>
+            <li class="sb-item">President, Troop Leader's Council — Maliyadeva Adarsha Scout Group (2020–2022)</li>
+            <li class="sb-item">Leader — School Robotics Society</li>
+          </ul>
+        </section>
+
+      </aside>
+      <!-- ════ END SIDEBAR ════ -->
+
+      <!-- ════ MAIN COLUMN ════ -->
+      <main class="main-col">
+
+        <!-- About -->
+        <section aria-label="About Me">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+            About Me
+          </div>
+          <p class="about-text">
+            Final-year <strong>BSc. (Hons) Information Technology</strong> undergraduate at SLIIT, specializing in <strong>Software Engineering &amp; AI/ML</strong>.
+            Delivered production-grade systems across government and private sectors using Java Spring Boot, MERN stack, and Microservices architecture.
+            Open to <strong>Junior / Full Stack Developer</strong> roles — remote or on-site — ready to contribute from day one.
+          </p>
+        </section>
+
+        <!-- Work Experience -->
+        <section aria-label="Work Experience">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-4V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v11a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2zm-10-2h4v2h-4V4z"/></svg>
+            Work Experience
+          </div>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Full Stack Software Developer Intern</div>
+                <div class="exp-org">Ministry of Finance (ITMD), Colombo</div>
+              </div>
+              <span class="exp-period">May 2025 – Jan 2026</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built and maintained mission-critical government platforms using Spring Boot, Vue.js, Microservices, MySQL, and GitHub.</li>
+              <li>Worked on API development, security implementation, service monitoring, and software testing across the full lifecycle.</li>
+            </ul>
+          </div>
+
+          <hr class="exp-divider" />
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Freelance Developer</div>
+                <div class="exp-org"><a href="https://www.zorscode.com" target="_blank">ZorsCode (zorscode.com)</a></div>
+              </div>
+              <span class="exp-period">Jan 2025 – Present</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Delivered multiple client projects across web and mobile platforms.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section aria-label="Education">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+            Education
+          </div>
+          <div class="edu-entry">
+            <div class="edu-degree">BSc. (Hons) Information Technology</div>
+            <div class="edu-spec">Specialization: Software Engineering &amp; AI/ML</div>
+            <div class="edu-inst">Sri Lanka Institute of Information Technology (SLIIT)</div>
+            <div class="edu-meta">
+              <span class="edu-badge">Oct 2022 – Present</span>
+              <span class="edu-badge">Reg No: IT22075208</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects (Top 6) -->
+        <section aria-label="Projects">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+            Projects <span style="font-size:0.56rem;font-weight:400;color:var(--ink3);letter-spacing:0;text-transform:none;border:none;">&nbsp;— Top 6 shown · Full list at vidura.live</span>
+          </div>
+
+          <!-- P1 -->
+          <div class="proj-entry">
+            <div class="proj-top">
+              <div class="proj-name">🏛️ Ministry of Finance — Gov. Platforms</div>
+              <div class="proj-links">
+                <a class="proj-link" href="https://vidura.live/#projects" target="_blank">Portfolio ↗</a>
+              </div>
+            </div>
+            <div class="proj-desc">Contributed to government-scale audit engines and accounting platforms covering API dev, DB management, security, and service monitoring.</div>
+            <div class="proj-stack">
+              <span class="stack-pill">Spring Boot</span><span class="stack-pill">Vue.js</span><span class="stack-pill">Microservices</span><span class="stack-pill">MySQL</span><span class="stack-pill">Tailwind</span><span class="stack-pill">GitHub</span>
+            </div>
+          </div>
+
+          <!-- P2 -->
+          <div class="proj-entry">
+            <div class="proj-top">
+              <div class="proj-name">🦊 FocusFox — Chrome Extension</div>
+              <div class="proj-links">
+                <a class="proj-link" href="https://chromewebstore.google.com/detail/focusfox/kgfihielaibchimfgfkdlehkldegiokl" target="_blank">Chrome Store ↗</a>
+                <a class="proj-link" href="https://github.com/Viduraz/Focus_Fox" target="_blank">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="proj-desc">Academic productivity tool for SLIIT students integrating with Moodle &amp; CourseWeb. Published on Chrome Web Store.</div>
+            <div class="proj-stack">
+              <span class="stack-pill">JavaScript</span><span class="stack-pill">Chrome Extension API</span>
+            </div>
+          </div>
+
+          <!-- P3 -->
+          <div class="proj-entry">
+            <div class="proj-top">
+              <div class="proj-name">🛒 JayasingheStoreline — MERN Retail System</div>
+              <div class="proj-links">
+                <a class="proj-link" href="https://jayasinghestorelines.netlify.app/" target="_blank">Live ↗</a>
+                <a class="proj-link" href="https://github.com/chathuwa-whiz/JayasingheStoreline-MERN.git" target="_blank">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="proj-desc">Full MERN retail &amp; inventory system for an 8-member team with PayHere payment gateway integration.</div>
+            <div class="proj-stack">
+              <span class="stack-pill">React</span><span class="stack-pill">Node.js</span><span class="stack-pill">Express</span><span class="stack-pill">MongoDB</span><span class="stack-pill">Redux Toolkit</span><span class="stack-pill">PayHere API</span>
+            </div>
+          </div>
+
+          <!-- P4 -->
+          <div class="proj-entry">
+            <div class="proj-top">
+              <div class="proj-name">⛺ MAJ'25 — Digital Scout Camp Platform</div>
+              <div class="proj-links">
+                <a class="proj-link" href="https://maj2025com.netlify.app/" target="_blank">Live ↗</a>
+                <a class="proj-link" href="https://github.com/Viduraz/MAJ-25" target="_blank">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="proj-desc">Sri Lanka's first digitalized scout camping platform — participant registration, activity tracking, and admin operations.</div>
+            <div class="proj-stack">
+              <span class="stack-pill">React</span><span class="stack-pill">Express.js</span><span class="stack-pill">MongoDB</span><span class="stack-pill">Redux Toolkit</span><span class="stack-pill">Framer Motion</span>
+            </div>
+          </div>
+
+          <!-- P5 -->
+          <div class="proj-entry">
+            <div class="proj-top">
+              <div class="proj-name">🏪 GuruGedara — POS &amp; Inventory System</div>
+              <div class="proj-links">
+                <a class="proj-link" href="http://gurugedara.duckdns.org" target="_blank">Live ↗</a>
+                <a class="proj-link" href="https://github.com/Viduraz/gurugedara.duckdns.org.git" target="_blank">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="proj-desc">Deployed at GuruGedara Publications &amp; Kurunegala District Scout HQ. Real-time inventory, transaction workflows, PDF invoices.</div>
+            <div class="proj-stack">
+              <span class="stack-pill">PHP</span><span class="stack-pill">MySQL</span><span class="stack-pill">MVC</span><span class="stack-pill">AJAX</span><span class="stack-pill">TCPDF</span>
+            </div>
+          </div>
+
+          <!-- P6 -->
+          <div class="proj-entry">
+            <div class="proj-top">
+              <div class="proj-name">🌾 AgriLanka — Agriculture Management Platform</div>
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/Viduraz/PAF_SLIIT.git" target="_blank">GitHub ↗</a>
+              </div>
+            </div>
+            <div class="proj-desc">Supports Sri Lankan farmers with AI disease detection, crop weather planning, and microservices architecture.</div>
+            <div class="proj-stack">
+              <span class="stack-pill">Spring Boot</span><span class="stack-pill">React</span><span class="stack-pill">MongoDB</span><span class="stack-pill">Firebase</span><span class="stack-pill">Cloudinary</span>
+            </div>
+          </div>
+
+          <div class="proj-more">Full project list: <a href="https://vidura.live/#projects" target="_blank">vidura.live/#projects</a></div>
+        </section>
+
+        <!-- Referees -->
+        <section aria-label="References">
+          <div class="sec-title">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            Referees
+          </div>
+          <div class="ref-grid">
+            <div class="ref-card">
+              <div class="ref-name">Udesh I. W. Seneviratna</div>
+              <div class="ref-pos">Additional Director General, ITMD</div>
+              <div class="ref-org">Ministry of Finance, Colombo<br>Secretary, CSSL of Sri Lanka</div>
+              <div class="ref-contact">
+                <div class="ref-row"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg><a href="mailto:udeshiws@gmail.com">udeshiws@gmail.com</a></div>
+                <div class="ref-row"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>0714899629</div>
+              </div>
+            </div>
+            <div class="ref-card">
+              <div class="ref-name">K. Sudharshan</div>
+              <div class="ref-pos">Assistant Director, ITMD</div>
+              <div class="ref-org">Ministry of Finance, Colombo</div>
+              <div class="ref-contact">
+                <div class="ref-row"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg><a href="mailto:dharshan90@gmail.com">dharshan90@gmail.com</a></div>
+                <div class="ref-row"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>0770715697</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <!-- ════ END MAIN ════ -->
+
+    </div><!-- end cv-body -->
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="cv-footer">
+      Portfolio &amp; full project details at <a href="https://vidura.live" target="_blank">vidura.live</a> &nbsp;·&nbsp; Generated June 2026
+    </footer>
+
+  </div><!-- end cv-page -->
+
+  <script>
+    function handlePrint() {
+      const orig = document.title;
+      document.title = 'Vidura_Rathnayaka(vidura.live)';
+      window.print();
+      setTimeout(() => { document.title = orig; }, 2000);
+    }
+
+    // Inject profile photo from same directory
+    (function () {
+      const img = new Image();
+      img.onload = function () {
+        const wrap = document.getElementById('hdr-photo-wrap');
+        if (wrap) {
+          wrap.innerHTML = '';
+          wrap.appendChild(img);
+        }
+      };
+      img.src = '/images/profile_clean.png';
+      img.alt = 'Vidura Rathnayaka';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:50%;';
+    })();
+  </script>
+
+</body>
+</html>
