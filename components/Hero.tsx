@@ -80,25 +80,11 @@ const ctaButtons = [
   { label: 'Contact Me', href: '#contact', variant: 'secondary' as const },
 ]
 
-// Detects mobile/tablet at click time and either downloads the PDF
-// directly (mobile) or opens the interactive CV page (desktop).
+// Opens the interactive CV page in a new tab on all devices.
+// On mobile, the browser's native share/print menu can be used to save as PDF.
 function handleCVAction(e: React.MouseEvent) {
   e.preventDefault()
-  const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      typeof navigator !== 'undefined' ? navigator.userAgent : ''
-    ) || (typeof window !== 'undefined' && window.innerWidth < 1024)
-
-  if (isMobile) {
-    const a = document.createElement('a')
-    a.href = '/cv.pdf'
-    a.download = 'Vidura_Rathnayaka_CV.pdf'
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-  } else {
-    window.open('/cv.html', '_blank', 'noopener,noreferrer')
-  }
+  window.open('/cv.html', '_blank', 'noopener,noreferrer')
 }
 
 const fadeUp = (delay = 0) => ({
