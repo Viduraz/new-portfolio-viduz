@@ -124,7 +124,7 @@ export default function MofInternshipModal({ isOpen, onClose }: MofInternshipMod
                   <div>
                     <span className="font-mono-label text-[#3b82f6] text-xs">Professional Experience</span>
                     <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mt-1">
-                      Trainee Software Developer Intern
+                      Trainee Full-stack Software Developer Intern
                     </h1>
                   </div>
                 </div>

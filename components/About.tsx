@@ -113,7 +113,7 @@ export default function About() {
                   I am a passionate final-year IT undergraduate specializing in Information Technology and machine learning. My engineering philosophy centers on translating complex operational requirements into clean, modular, and high-performance software.
                 </p>
                 <p>
-                  My hands-on experience as a Trainee Software Developer at the <strong className="text-white font-medium">Ministry of Finance (ITMD)</strong> allowed me to deploy and maintain government-scale platforms. I design scalable backends using <strong className="text-white font-medium">Java Spring Boot</strong> alongside responsive, state-driven user interfaces leveraging the <strong className="text-white font-medium">MERN stack</strong>.
+                  My hands-on experience as a Trainee Full-stack Software Developer at the <strong className="text-white font-medium">Ministry of Finance (ITMD)</strong> allowed me to deploy and maintain government-scale platforms. I design scalable backends using <strong className="text-white font-medium">Java Spring Boot</strong> alongside responsive, state-driven user interfaces leveraging the <strong className="text-white font-medium">MERN stack</strong>.
                 </p>
               </div>
             </Reveal>
